@@ -25,6 +25,11 @@ or install it as a service
 
 please copy settings_example.py and create own settings.py
 
+then import databases
+```bash
+python import_dbs.py
+```
+
 
 to run flask:
 
