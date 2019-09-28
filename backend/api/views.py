@@ -43,7 +43,7 @@ class GetOfferView(Resource):
             "arrival_location": "String",
             "price": "String",
             "participants": "Number",
-            "suprise_name":"String",
+            "surprise_name":"String",
             "event_name": "String",
             "event_description":"String"
         }
@@ -63,7 +63,7 @@ class GetOfferView(Resource):
             'arrival_location': 'Bern',
             'price': 120,
             'participants': request_json['participants'],
-            'suprise_name': 'Nobody expects Spanish inquisition',
+            'surprise_name': 'Nobody expects Spanish inquisition',
             'event_name': 'Hiking concert',
             'event_description': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
         }
