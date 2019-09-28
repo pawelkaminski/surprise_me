@@ -11,7 +11,8 @@ import { NgForm } from "@angular/forms";
 })
 export class HomeComponent implements OnInit {
   gifListenerSub: Subscription;
-  configuration: Configuration = { activity: null, departure: null, schedule: null, maxPrice: null, participants: null };
+  configuration: Configuration = { activity: null, departureLocation: null, schedule: null, maxPrice: null, participants: null };
+  speech: String = null
   constructor(private dbService: DatabaseService) { }
 
   ngOnInit() {
@@ -20,6 +21,10 @@ export class HomeComponent implements OnInit {
       .subscribe(data => {
         this.configuration = data;
       });
+  }
+
+  speechToText() {
+    console.log("this.configuration")
   }
 
   onSubmit() {
