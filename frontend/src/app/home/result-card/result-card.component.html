@@ -1,11 +1,37 @@
 <div class="result-card mt-5">
-  <h1 class="title">Hinking like a viking{{surprice.surprice_name}}</h1>
-  <div class="bg"></div>
 
-  <div class="box">
-    <div class="point"></div>
-    <div class="line"> </div>
-    <div class="point"></div>
-  </div>
-  <button (click)="setSpinner(true)" class="btn btn-highlight">I want to experience <br> this adventure</button>
+
+  <img *ngIf="spinner || !surprice; else showData" src="../../../assets/Image/spinner.gif" alt="logo">
+
+
+  <ng-template *ngIf="surprice" #showData>
+    <h1 class="title">Hiking like a viking{{surprice.surprice_name}}</h1>
+    <div class="bg"></div>
+    <div class="row">
+      <div class="col-1">
+        <div class="box">
+          <div class="point mt-2"></div>
+          <div class="line"> </div>
+          <div class="point"></div>
+        </div>
+      </div>
+      <div class="col-8">
+        <h2>
+          Fri. 04.10.19, 14:23 Zurich HB {{surprice.departure_schedule}} {{surprice.departure_location}}
+        </h2>
+        <h2 class="mt-4">
+          <b>35CH {{surprice.price}}</b> per Person
+        </h2>
+        <h2 class="mt-4">
+          Fri. 04.10.19, 23:45 Zurich HB {{surprice.arrival_schedule}}{{surprice.arrival_location}}
+        </h2>
+      </div>
+      <div class="col-2">
+        <button (click)="setSpinner(true)" class="btn btn-highlight mt-4">I want to experience <br> this
+          adventure</button>
+      </div>
+    </div>
+  </ng-template>
+
+
 </div>
