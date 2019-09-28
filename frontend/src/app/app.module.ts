@@ -11,12 +11,14 @@ import { HomeComponent } from "./home/home.component";
 import { MiscellaneousComponent } from "./miscellaneous/miscellaneous.component";
 import { MatButtonModule, MatCheckboxModule, MatSlideToggleModule, MatSliderModule } from "@angular/material";
 import { ParticlesModule } from "angular-particle";
+import { ResultCardComponent } from './home/result-card/result-card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    MiscellaneousComponent
+    MiscellaneousComponent,
+    ResultCardComponent
   ],
   imports: [
     BrowserModule,
