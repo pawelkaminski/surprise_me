@@ -9,3 +9,21 @@ body {
 ::-webkit-scrollbar {
   width: 0px;
 }
+
+:root {
+  --highlight: #FF0000;
+  --highlight-border: rgba(255, 0, 0, 0.582);
+}
+
+h1 {
+  font-size: 40px
+}
+
+.btn-highlight {
+  background: var(--highlight);
+  color: white;
+  height: 30px;
+  margin-top: -10px;
+  font-size: 12px;
+  border-radius: 10px;
+}
