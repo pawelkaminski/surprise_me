@@ -1,12 +1,28 @@
-# Config API
+# POST TO API
 
 ```json
 {
     "activity": "String",
-    "departure": "String",
+    "departure_location": "String",
     "schedule": "Date",
     "maxPrice": "Number",
     "participants": "Number"
+}
+```
+
+# RESPONSE FROM API
+
+```json
+{
+    "departure_schedule": "Date",
+    "departure_location": "String",
+    "arrival_schedule": "Date",
+    "arrival_location": "String",
+    "price": "String",
+    "participants": "Number",
+    "suprise_name":"String",
+    "event_name": "String", 
+    "event_description":"String"
 }
 ```
 
