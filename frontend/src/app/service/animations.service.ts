@@ -1,13 +1,14 @@
 import { Injectable } from "@angular/core";
 import * as $ from "jquery";
 import { Subject, Observable } from "rxjs";
+import { DatabaseService } from "./database.service";
 
 @Injectable({
   providedIn: "root"
 })
 export class AnimationsService {
   spinner = new Subject<any>();
-  constructor() { }
+  constructor(private dbService: DatabaseService) { }
 
   spinnerListener() {
     return this.spinner.asObservable();
@@ -15,5 +16,9 @@ export class AnimationsService {
 
   spinnerState(state: Boolean) {
     this.spinner.next(state);
+    setTimeout(() => {
+      this.spinner.next(0);
+      this.dbService.setSurprise()
+    }, 3000)
   }
 } 

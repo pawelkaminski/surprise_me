@@ -2,7 +2,7 @@
 <div class="container">
 
   <div class="d-flex justify-content-center">
-    <img src="../../../assets/Image/logo_invert.png" alt="logo">
+    <img src="../../../assets/Image/logo.png" alt="logo">
   </div>
 
   <div class="row w-100 d-flex justify-content-center mt-5 mb-5">
@@ -15,7 +15,7 @@
           <div class="highlight d-inline-block">When</div> would you like to explore?
         </h1>
         <h1>
-          <div class="highlight d-inline-block">Wich</div> price?
+          <div class="highlight d-inline-block">Which</div> price?
         </h1>
       </div>
     </div>
@@ -48,15 +48,15 @@
       </div>
       <div style="width: auto;" class="form-group d-inline-block">
         <label for="schedule">Schedule</label>
-        <input style="width: 100px;" type="date" [(ngModel)]="configuration.schedule" name="schedule"
+        <input style="width: 150px;" type="date" [(ngModel)]="configuration.schedule" name="schedule"
           class="form-control" id="schedule">
       </div>
       <div style="width: auto;" class="form-group d-inline-block">
-        <label for="price">max. Price</label>
-        <input style="width: 100px;" type="number" [(ngModel)]="configuration.price" name="price" class="form-control"
-          id="price">
+        <label for="maxPrice">max. Price</label>
+        <input style="width: 100px;" type="number" [(ngModel)]="configuration.maxPrice" name="maxPrice" class="form-control"
+          id="maxPrice">
       </div>
-      <div class="form-group d-inline-block mb-0">
+      <div style="width:100px" class="form-group d-inline-block mb-0">
         <label for="participants">Participants</label>
         <input type="number" [(ngModel)]="configuration.participants" name="participants" class="form-control"
           id="participants">
@@ -66,7 +66,7 @@
   </div>
 
   <div class="d-flex justify-content-center w-100">
-    <app-result-card *ngIf="surprise || spinner"></app-result-card>
+    <app-result-card></app-result-card>
   </div>
 
 </div>

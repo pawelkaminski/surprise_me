@@ -1,14 +1,15 @@
 export interface Configuration {
     activity: String,
     departureLocation: String,
-    schedule: Date,
+    schedule: String,
     maxPrice: Number,
     participants: Number
 }
 
 export interface Surprise {
+    departure_schedule: String,
     departure_location: String,
-    arrival_schedule: Date,
+    arrival_schedule: String,
     arrival_location: String,
     price: String,
     participants: Number,

@@ -42,7 +42,7 @@ export class HomeComponent implements OnInit {
   speechToText() {
     console.log("this.configuration")
     setTimeout(() => {
-      this.configuration = { activity: "Hiking", departureLocation: "Zurich HB", schedule: new Date("1995-12-17T03:24:00"), maxPrice: 30, participants: 1 };
+      this.configuration = { activity: "Hiking", departureLocation: "Zurich HB", schedule: "2019-12-08", maxPrice: 30, participants: 1 };
     }, 1000)
   }
 

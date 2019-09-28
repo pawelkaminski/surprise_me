@@ -14,11 +14,10 @@
 
 .bg {
   position: absolute;
-  top: -300px;
   z-index: -199;
   width: 100vw;
   height: 200vh;
-  background: linear-gradient(rgba(0, 0, 0, 0.705), rgba(0, 0, 0, 0.685)),
+  background: linear-gradient(rgba(0, 0, 0, 0.788), rgba(0, 0, 0, 0.795)),
     url('../../assets/Image/background.png');
   background-repeat: no-repeat;
   background-size: 100%;
