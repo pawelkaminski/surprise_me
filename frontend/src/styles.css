@@ -27,3 +27,27 @@ h1 {
   font-size: 12px;
   border-radius: 10px;
 }
+
+h1 {
+  font-weight: 500
+}
+
+h2 {
+  font-weight: 500
+}
+
+h3 {
+  font-weight: 500
+}
+
+h4 {
+  font-weight: 500
+}
+
+span {
+  font-weight: 500
+}
+
+button {
+  font-weight: 500
+}
