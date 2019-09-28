@@ -59,14 +59,15 @@ class SBBClient:
                 'tripId': el['tripId'],
                 'arrivalDateTime': el['segments'][0]['destination']['arrivalDateTime'],
                 'departureDateTime': el['segments'][0]['origin']['departureDateTime'],
-                'price': self._get_price(el['tripId'], headers['Authorization'])
+                'price': self._get_price([el['tripId']], headers['Authorization'])
             })
+
         return obtained_trips
 
-    def _get_price(self, trip_id, auth):
+    def _get_price(self, trip_ids, auth):
         params = {
             'qualityOfService': 2,
-            'tripIds': [trip_id],
+            'tripIds': trip_ids,
             'passengers': 'paxa;42;half-fare',
         }
 
@@ -78,4 +79,5 @@ class SBBClient:
             'Accept-Language': 'en',
         }
         response = requests.get(self.BASE_SBB_APP_URL + '/api/v2/prices', params=params, headers=headers)
+        # TODO(pawelk): speed up by running only one query
         return response.json()[0]['price']
