@@ -1,29 +1,32 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { Subject, Observable } from "rxjs";
-import { Configuration } from '../models/configuration';
+import { Configuration, Surprise } from '../models/configuration';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DatabaseService {
-  private data = new Subject<any>();
+  private configurationData = new Subject<any>();
+  private supriseData = new Subject<any>();
   constructor(private http: HttpClient) { }
 
-  getGifListener() {
-    return this.data.asObservable();
+  getConfigurationListener() {
+    return this.configurationData.asObservable();
   }
 
   sendConfiguration(configuration: Configuration) {
     this.http
       .post("http://localhost:3000/post", configuration)
       .subscribe(
-        (result) => {
-          console.log(result)
+        (surpriseData: Surprise) => {
+          console.log(surpriseData)
+          this.supriseData.next(surpriseData)
         },
         err => console.error(err)
       );
   }
+
   get(i) {
     const context = { name: "Dummy" }
     this.http
