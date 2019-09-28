@@ -32,7 +32,7 @@ class GetOfferView(Resource):
             "activity": "String",
             "departure_location": "String",
             "schedule": "Date",
-            "maxPrice": "Number",
+            "max_price": "Number",
             "participants": "Number"
         }
 
@@ -50,7 +50,7 @@ class GetOfferView(Resource):
         :return:
         """
         request_json = request.get_json()
-        print(request_json['maxPrice'])
+        print(request_json['max_price'])
         print(request_json['activity'])
         print(request_json['schedule'])
 

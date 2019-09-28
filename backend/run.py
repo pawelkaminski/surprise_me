@@ -18,3 +18,5 @@ is_debug = config.get('DEBUG', False)
 
 if __name__ == '__main__':
     application.run(host='0.0.0.0', debug=is_debug)
+
+
