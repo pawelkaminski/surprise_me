@@ -16,9 +16,10 @@ class DBImporter:
 
     def import_db(self):
         with MongoClient(host=MONGO_IP) as client:
+            self._import_didok(client)
             self._import_towns(client)
             self._import_events(client)
-            self._import_didok(client)
+
 
     def _import_events(self, client):
         with open('data/event.json') as event_file:
@@ -38,7 +39,7 @@ class DBImporter:
     def _import_didok(self, client):
         with open('data/didok.csv') as didok_file:
             collection = client[MONGO_DATABASE][DIDOK_COLLECTION]
-            didoks = csv.DictReader(didok_file)
+            didoks = csv.DictReader(didok_file, delimiter=';')
             for didok in didoks:
                 collection.insert_one(didok)
 

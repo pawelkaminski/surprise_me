@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_restful import Api
 
-from .api.urls import set_urls
+from backend.api.urls import set_urls
 
 
 application = Flask(__name__)
