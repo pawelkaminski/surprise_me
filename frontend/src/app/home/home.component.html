@@ -1,30 +1,42 @@
+<div class="bg"></div>
 <div class="container">
-  <h1>Boot</h1>
+  <img src="../../../assets/Image/logo.png" alt="logo">
+  <div class="initial">
 
-  <form (submit)="onSubmit()">
-    <div class="form-group d-inline-block">
-      <label for="activity">Activity</label>
-      <input type="text" [(ngModel)]="configuration.activity" name="activity" class="form-control" id="activity">
-    </div>
-    <div class="form-group d-inline-block">
-      <label for="departure">Departure</label>
-      <input type="text" [(ngModel)]="configuration.departure" name="departure" class="form-control" id="departure">
-    </div>
-    <div class="form-group d-inline-block">
-      <label for="schedule">Schedule</label>
-      <input type="date" [(ngModel)]="configuration.schedule" name="schedule" class="form-control" id="schedule">
-    </div>
-    <div class="form-group d-inline-block">
-      <label for="price">max. Price</label>
-      <input type="password" [(ngModel)]="configuration.price" name="price" class="form-control" id="price">
-    </div>
-    <div class="form-group d-inline-block">
-      <label for="participants">Participants</label>
-      <input type="password" [(ngModel)]="configuration.participants" name="participants" class="form-control"
-        id="participants">
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
-  <h1>{{configuration.activity}}</h1>
-  <app-result-card></app-result-card>
+    <form (submit)="speechToText()">
+      <div class="form-group d-inline-block">
+        <label for="speech">Speech</label>
+        <input type="text" [(ngModel)]="speech" name="speech" class="form-control" id="speech">
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+    <form (submit)="onSubmit()">
+      <div class="form-group d-inline-block">
+        <label for="activity">Activity</label>
+        <input type="text" [(ngModel)]="configuration.activity" name="activity" class="form-control" id="activity">
+      </div>
+      <div class="form-group d-inline-block">
+        <label for="departureLocation">Departure</label>
+        <input type="text" [(ngModel)]="configuration.departureLocation" name="departureLocation" class="form-control"
+          id="departureLocation">
+      </div>
+      <div class="form-group d-inline-block">
+        <label for="schedule">Schedule</label>
+        <input type="date" [(ngModel)]="configuration.schedule" name="schedule" class="form-control" id="schedule">
+      </div>
+      <div class="form-group d-inline-block">
+        <label for="price">max. Price</label>
+        <input type="password" [(ngModel)]="configuration.price" name="price" class="form-control" id="price">
+      </div>
+      <div class="form-group d-inline-block">
+        <label for="participants">Participants</label>
+        <input type="password" [(ngModel)]="configuration.participants" name="participants" class="form-control"
+          id="participants">
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+    <app-result-card></app-result-card>
+  </div>
 </div>
