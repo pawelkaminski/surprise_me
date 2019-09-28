@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
   configurationListenerSub: Subscription;
   surpriseListenerSub: Subscription;
   spinnerListenerSub: Subscription;
-  configuration: Configuration = { activity: null, departureLocation: null, schedule: null, maxPrice: null, participants: null };
+  configuration: Configuration = { activity: null, departure_location: null, schedule: null, max_price: null, participants: null };
   surprise: Surprise
   speech: String = null
   spinner: Boolean = false
@@ -42,7 +42,7 @@ export class HomeComponent implements OnInit {
   speechToText() {
     console.log("this.configuration")
     setTimeout(() => {
-      this.configuration = { activity: "Hiking", departureLocation: "Zurich HB", schedule: "2019-12-08", maxPrice: 30, participants: 1 };
+      this.configuration = { activity: "Hiking", departure_location: "Zurich HB", schedule: "2019-12-08", max_price: 30, participants: 1 };
     }, 1000)
   }
 
