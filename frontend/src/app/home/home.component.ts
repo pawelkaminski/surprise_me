@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { Subscription } from "rxjs";
 import { DatabaseService } from "../service/database.service";
+import { Configuration } from "../models/configuration";
+import { NgForm } from "@angular/forms";
 
 @Component({
   selector: "app-home",
@@ -9,14 +11,19 @@ import { DatabaseService } from "../service/database.service";
 })
 export class HomeComponent implements OnInit {
   gifListenerSub: Subscription;
-  data = [];
+  configuration: Configuration = { activity: null, departure: null, schedule: null, maxPrice: null, participants: null };
   constructor(private dbService: DatabaseService) { }
 
   ngOnInit() {
     this.gifListenerSub = this.dbService
       .getGifListener()
       .subscribe(data => {
-        this.data = data;
+        this.configuration = data;
       });
+  }
+
+  onSubmit() {
+    console.log(this.configuration)
+    this.dbService.sendConfiguration(this.configuration);
   }
 }

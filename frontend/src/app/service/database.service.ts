@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { Subject, Observable } from "rxjs";
+import { Configuration } from '../models/configuration';
 
 @Injectable({
   providedIn: 'root'
@@ -13,13 +14,12 @@ export class DatabaseService {
     return this.data.asObservable();
   }
 
-  post(i) {
-    const context = { name: "Dummy" }
+  sendConfiguration(configuration: Configuration) {
     this.http
-      .post("http://localhost:3000/post", context)
+      .post("http://localhost:3000/post", configuration)
       .subscribe(
-        (data) => {
-          console.log(data)
+        (result) => {
+          console.log(result)
         },
         err => console.error(err)
       );
