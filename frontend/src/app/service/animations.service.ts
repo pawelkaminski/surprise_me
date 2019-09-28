@@ -19,6 +19,6 @@ export class AnimationsService {
     setTimeout(() => {
       this.spinner.next(0);
       this.dbService.setSurprise()
-    }, 3000)
+    }, 6000)
   }
 } 

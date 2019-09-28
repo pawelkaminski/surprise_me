@@ -21,7 +21,7 @@ export class DatabaseService {
 
   sendConfiguration(configuration: Configuration) {
     this.http
-      .post("http://172.18.0.1:8000/api/offer", configuration)
+      .post("http://35.180.243.173:8000/api/offer/", configuration)
       .subscribe(
         (surpriseData: Surprise) => {
           console.log(surpriseData)
