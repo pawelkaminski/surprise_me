@@ -1,8 +1,14 @@
+from datetime import (
+    datetime,
+    timedelta
+)
+
 from http import HTTPStatus
-from datetime import datetime
 
 from flask_restful import Resource
 from pymongo import MongoClient
+
+from backend.clients.sbb_client import SBBClient
 
 
 class PingView(Resource):
@@ -19,5 +25,7 @@ class GetTextView(Resource):
 
 class GetOfferView(Resource):
     def get(self):
-        mock_offer = {'start':datetime.now(), 'end': datetime.now(), 'where': 'Zurich', 'price': 10}
+        SBBClient().get_cheapest_by_location('Zürich HB', 'Bern', datetime.now() + timedelta(days=6),
+                                             datetime.now() + timedelta(days=7))
+        mock_offer = {'start': str(datetime.now()), 'end': str(datetime.now()), 'where': 'Zurich', 'price': 10}
         return {'params': {}, 'offer': [mock_offer, mock_offer]}, HTTPStatus.OK
