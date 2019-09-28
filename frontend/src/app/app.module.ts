@@ -4,6 +4,9 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { HttpClientModule } from "@angular/common/http";
 import { NgwWowModule } from 'ngx-wow';
 import { ChartsModule } from 'ng2-charts';
+import { FormsModule } from "@angular/forms";
+import { AngularMaterialModule } from "./angular-material.module";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 import { AppComponent } from "./app.component";
 import { RouterModule, Routes } from "@angular/router";
@@ -23,6 +26,7 @@ import { ResultCardComponent } from './home/result-card/result-card.component';
   imports: [
     BrowserModule,
     NgbModule,
+    FormsModule,
     HttpClientModule,
     ParticlesModule,
     MatButtonModule,
@@ -30,7 +34,9 @@ import { ResultCardComponent } from './home/result-card/result-card.component';
     NgwWowModule,
     ChartsModule,
     MatSlideToggleModule,
+    AngularMaterialModule,
     MatSliderModule,
+    BrowserAnimationsModule,
     RouterModule.forRoot([
       {
         path: "",
