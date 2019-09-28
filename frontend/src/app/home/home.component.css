@@ -19,13 +19,15 @@
   width: 100vw;
   height: 200vh;
   background: linear-gradient(rgba(0, 0, 0, 0.705), rgba(0, 0, 0, 0.685)),
-    url('../../assets/Image/raileurope_stylefame_swizerland_dribble.jpg');
+    url('../../assets/Image/background.png');
   background-repeat: no-repeat;
   background-size: 100%;
 }
 
 input {
   border-radius: 10px;
+  font-size: 18px;
+  height: 30px;
   outline: none;
   border: none
 }
@@ -37,5 +39,20 @@ label {
 
 img {
   margin-top: 20px;
-  width: 80px;
+  width: 120px;
+}
+
+.highlight {
+  color: var(--highlight);
+}
+
+.questions {
+  color: white
+}
+
+.record {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  font-size: 18px;
 }
