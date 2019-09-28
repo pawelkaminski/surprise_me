@@ -2,6 +2,7 @@
 
 <div *ngIf="spinner" class="result-card mt-5 spinner-card">
   <img src="../../../assets/Image/spinner.gif" alt="logo">
+  <img style="top:90%; width: 300px; margin-left: -150px" src="../../../assets/Image/loading.gif" alt="logo">
 </div>
 
 <div *ngIf="surprise && !spinner" class="result-card mt-5">
@@ -9,7 +10,7 @@
     <div class="flip-card-inner">
       <div class="flip-card-front">
         <h1 class="title">{{surprise.surprise_name}}</h1>
-        <div class="bg"></div>
+        <div class="bg-front"></div>
         <div class="row">
           <div class="col-1">
             <div class="box">
@@ -37,12 +38,12 @@
       </div>
 
       <div class="flip-card-back">
-        <h1 class="title">{{surprise.event_name}}</h1>
-        <div class="bg"></div>
+        <h1 class="title">You are going to {{surprise.event_name}} at {{surprise.destinalion_location}}</h1>
+        <div class="bg-back"></div>
         <div class="row">
-          <div class="col-8">
-            <h2 class="mt-4">
-              <b>{{surprise.description}}CH</b> per person
+          <div class="col-8 ml-5">
+            <h2 class="mt-2">
+              {{surprise.event_description}}
             </h2>
             <h2 class="mt-4">
               {{surprise.arrival_schedule}}{{surprise.arrival_location}}

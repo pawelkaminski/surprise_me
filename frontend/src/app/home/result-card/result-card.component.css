@@ -14,18 +14,25 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  margin-left: -100px;
+  margin-left: -70px;
   margin-top: -120px;
-  width: 200px;
+  width: 160px;
 }
 
-
-.bg {
+.bg-front {
   position: absolute;
   width: 700px;
-  height: 300px;
-  top: -100px;
-  background: linear-gradient(rgba(0, 0, 0, 0.24), rgba(0, 0, 0, 0.116)), url('../../../assets/Image/snow.jpg');
+  height: 200px;
+  top: 0px;
+  background: linear-gradient(rgba(0, 0, 0, 0.24), rgba(0, 0, 0, 0.116)), url('../../../assets/Image/snow.png');
+}
+
+.bg-back {
+  position: absolute;
+  width: 700px;
+  height: 200px;
+  top: 0px;
+  background: linear-gradient(rgba(0, 0, 0, 0.24), rgba(0, 0, 0, 0.116)), url('../../../assets/Image/zug.png');
 }
 
 .title {
