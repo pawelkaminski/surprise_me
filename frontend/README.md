@@ -20,7 +20,7 @@
     "arrival_location": "String",
     "price": "String",
     "participants": "Number",
-    "suprise_name":"String",
+    "surprise_name":"String",
     "event_name": "String", 
     "event_description":"String"
 }

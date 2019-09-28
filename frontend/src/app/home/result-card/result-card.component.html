@@ -1,3 +1,60 @@
-<div class="result-card">
-  <div class="bg"></div>
+<!-- <img class="confetti" src="../../../assets/Image/confetti.gif" alt="confetti"> -->
+
+<div *ngIf="spinner" class="result-card mt-5 spinner-card">
+  <img src="../../../assets/Image/spinner.gif" alt="logo">
+  <img style="top:90%; width: 300px; margin-left: -150px" src="../../../assets/Image/loading.gif" alt="logo">
+</div>
+
+<div *ngIf="surprise && !spinner" class="result-card mt-5">
+  <div class="flip-card">
+    <div class="flip-card-inner">
+      <div class="flip-card-front">
+        <h1 class="title">{{surprise.surprise_name}}</h1>
+        <div class="bg-front"></div>
+        <div class="row">
+          <div class="col-1">
+            <div class="box">
+              <div class="point mt-2"></div>
+              <div class="line"> </div>
+              <div class="point"></div>
+            </div>
+          </div>
+          <div class="col-8">
+            <h2>
+              {{surprise.departure_schedule}} {{surprise.departure_location}}
+            </h2>
+            <h2 class="mt-4">
+              <b>{{surprise.price}}CH</b> per Person
+            </h2>
+            <h2 class="mt-4">
+              {{surprise.arrival_schedule}}{{surprise.arrival_location}}
+            </h2>
+          </div>
+          <div class="col-3">
+            <button (click)="flipCard()" class="btn btn-highlight mt-4">I want to experience <br> this
+              adventure</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="flip-card-back">
+        <h1 class="title">You are going to {{surprise.event_name}} at {{surprise.destinalion_location}}</h1>
+        <div class="bg-back"></div>
+        <div class="row">
+          <div class="col-8 ml-5">
+            <h2 class="mt-2">
+              {{surprise.event_description}}
+            </h2>
+            <h2 class="mt-4">
+              {{surprise.arrival_schedule}}{{surprise.arrival_location}}
+            </h2>
+          </div>
+          <div class="col-3">
+            <!-- <button (click)="flipCard()" class="btn btn-highlight mt-4">I want to experience <br> this
+              adventure</button> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
