@@ -1,42 +1,76 @@
 <div class="bg"></div>
 <div class="container">
-  <img src="../../../assets/Image/logo.png" alt="logo">
-  <div class="initial">
 
-    <form (submit)="speechToText()">
-      <div class="form-group d-inline-block">
-        <label for="speech">Speech</label>
-        <input type="text" [(ngModel)]="speech" name="speech" class="form-control" id="speech">
+  <div class="d-flex justify-content-center">
+    <img src="../../../assets/Image/logo.png" alt="logo">
+  </div>
+
+  <div class="row w-100 d-flex justify-content-center mt-5 mb-5">
+    <div class="col-7">
+      <div class="questions mt-5">
+        <h1>
+          <div class="highlight d-inline-block">What</div> would you like to explore?
+        </h1>
+        <h1>
+          <div class="highlight d-inline-block">When</div> would you like to explore?
+        </h1>
+        <h1>
+          <div class="highlight d-inline-block">Wich</div> price?
+        </h1>
       </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+    </div>
 
-    <form (submit)="onSubmit()">
+    <div class="col-4">
+      <form (submit)="speechToText()">
+        <div class="w-100 m-2 d-flex justify-content-center">
+          <button type="submit" class="btn btn-highlight record"><i class="fas fa-microphone"></i></button>
+        </div>
+        <div class="form-group d-inline-block w-100">
+          <textarea style="font-size: 18px; width: 100%" rows="5" [(ngModel)]="speech" name="speech"
+            class="form-control mt-2" id="speech"></textarea>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+  <div class="d-flex justify-content-center w-100">
+    <form class="mt-5" (submit)="onSubmit()">
       <div class="form-group d-inline-block">
         <label for="activity">Activity</label>
-        <input type="text" [(ngModel)]="configuration.activity" name="activity" class="form-control" id="activity">
+        <input style="width: 200px;" type="text" [(ngModel)]="configuration.activity" name="activity"
+          class="form-control" id="activity">
       </div>
       <div class="form-group d-inline-block">
         <label for="departureLocation">Departure</label>
-        <input type="text" [(ngModel)]="configuration.departureLocation" name="departureLocation" class="form-control"
-          id="departureLocation">
+        <input style="width: 200px;" type="text" [(ngModel)]="configuration.departureLocation" name="departureLocation"
+          class="form-control" id="departureLocation">
       </div>
-      <div class="form-group d-inline-block">
+      <div style="width: auto;" class="form-group d-inline-block">
         <label for="schedule">Schedule</label>
-        <input type="date" [(ngModel)]="configuration.schedule" name="schedule" class="form-control" id="schedule">
+        <input style="width: 100px;" type="date" [(ngModel)]="configuration.schedule" name="schedule"
+          class="form-control" id="schedule">
       </div>
-      <div class="form-group d-inline-block">
+      <div style="width: auto;" class="form-group d-inline-block">
         <label for="price">max. Price</label>
-        <input type="password" [(ngModel)]="configuration.price" name="price" class="form-control" id="price">
+        <input style="width: 100px;" type="number" [(ngModel)]="configuration.price" name="price" class="form-control"
+          id="price">
       </div>
-      <div class="form-group d-inline-block">
+      <div class="form-group d-inline-block mb-0">
         <label for="participants">Participants</label>
-        <input type="password" [(ngModel)]="configuration.participants" name="participants" class="form-control"
+        <input type="number" [(ngModel)]="configuration.participants" name="participants" class="form-control"
           id="participants">
       </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="submit" (click)="setSpinner(true)" class="btn btn-highlight">Submit</button>
     </form>
-
-    <app-result-card></app-result-card>
   </div>
+
+  <div *ngIf="spinner" class="d-flex justify-content-center w-100">
+    <img src="../../../assets/Image/spinner.gif" alt="logo">
+  </div>
+
+  <div class="d-flex justify-content-center w-100">
+    <app-result-card *ngIf="!surprise"></app-result-card>
+  </div>
+
 </div>

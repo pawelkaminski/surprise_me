@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AnimationsService } from 'src/app/service/animations.service';
 
 @Component({
   selector: 'app-result-card',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ResultCardComponent implements OnInit {
 
-  constructor() { }
+  constructor(private animationService: AnimationsService) { }
 
   ngOnInit() {
+  }
+
+  setSpinner(state: Boolean) {
+    this.animationService.spinnerState(true);
   }
 
 }
