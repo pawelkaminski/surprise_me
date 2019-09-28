@@ -13,21 +13,8 @@ class SBBClient:
     BASE_SBB_URL = 'https://sso-int.sbb.ch/'
     BASE_SBB_APP_URL = 'https://b2p-int.api.sbb.ch'
 
-    def get_cheapest_by_location(self, location_from, location_to, from_date, to_date):
-        token = self._get_token()
-        city_from_id = self._get_city_id(location_from)
-        city_to_id = self._get_city_id(location_to)
-
-        headers = {
-            'Authorization': 'Bearer ' + token,
-            'Accept': 'application/json',
-            'X-Contract-Id': 'ABC1234',
-            'X-Conversation-Id': 'e5eeb775-1e0e-4f89-923d-afa780ef844b',
-            'Accept-Language': 'en',
-        }
-
-        tickets_to = self._get_trips(from_date, city_from_id, city_to_id, headers)
-        tickets_from = self._get_trips(to_date, city_to_id, city_from_id, headers)
+    def __init__(self):
+        self.token = self._get_token()
 
     def _get_token(self):
         response = requests.post(self.BASE_SBB_URL+'/auth/realms/SBB_Public/protocol/openid-connect/token', {
@@ -37,6 +24,28 @@ class SBBClient:
             'contract_id': 'HAC222P',
         })
         return response.json()['access_token']
+
+    def get_cheapest_by_location(self, location_from, location_to, from_date, to_date):
+        city_from_id = self._get_city_id(location_from)
+        city_to_id = self._get_city_id(location_to)
+
+        headers = {
+            'Authorization': 'Bearer ' + self.token,
+            'Accept': 'application/json',
+            'X-Contract-Id': 'ABC1234',
+            'X-Conversation-Id': 'e5eeb775-1e0e-4f89-923d-afa780ef844b',
+            'Accept-Language': 'en',
+        }
+
+        tickets_to = self._get_trips(from_date, city_from_id, city_to_id, headers)
+        tickets_from = self._get_trips(to_date, city_to_id, city_from_id, headers)
+
+        #TODO(pawelk): change it to the cheapest one!
+        return {
+            'departure_schedule': tickets_to[0]['departureDateTime'],
+            'arrival_schedule': tickets_from[0]['departureDateTime'],
+            'price': tickets_from[0]['price'] + tickets_to[0]['price']
+        }
 
     def _get_city_id(self, city_name):
         with MongoClient(host=MONGO_IP) as client:

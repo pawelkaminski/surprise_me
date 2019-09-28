@@ -20,7 +20,6 @@ class DBImporter:
             self._import_towns(client)
             self._import_events(client)
 
-
     def _import_events(self, client):
         with open('data/event.json') as event_file:
             collection = client[MONGO_DATABASE][EVENT_COLLECTION]
