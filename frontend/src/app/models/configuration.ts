@@ -1,6 +1,6 @@
 export interface Configuration {
     activity: String,
-    departure: String,
+    departureLocation: String,
     schedule: Date,
     maxPrice: Number,
     participants: Number
