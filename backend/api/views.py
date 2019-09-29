@@ -129,11 +129,11 @@ class GetOfferView(Resource):
             'arrival_schedule': '2019-09-29T19:35',
             'departure_location': 'Zurich HB',
             'arrival_location': 'Bern',
-            'price': 120,
-            'participants': request_json['participants'],
-            'surprise_name': 'Nobody expects Spanish inquisition',
-            'event_name': 'Hiking concert',
-            'event_description': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+            'price': 320,
+            'participants': 1,
+            'surprise_name': 'Wanderungen im Heidiland.',
+            'event_name': 'Hiking: Bern',
+            'event_description': 'From Tannenboden you reach the beautiful surroundings of Seeben on the hiking trail via Winkelzahn. The hike around the Seebensee lake with the Churfirsten mountains behind invites you to marvel. After these beautiful impressions you return to Winkelzahn. The beautiful hiking route leads through the forest to the mountain station, then follow the path to Chrüz.',
         }
 
     def _process_cache(self, request_json):
