@@ -155,7 +155,7 @@ class GetOfferView(Resource):
                 'arrival_location': 'Flumserberg',
                 'price': 2900,
                 'participants': participants,
-                'surprise_name': 'Hiking im with Heidi.',
+                'surprise_name': 'Hiking with Heidi.',
                 'event_name': 'Hiking: Flumserberg',
                 'event_description': 'From Tannenboden you reach the beautiful surroundings of Seeben on the hiking trail via Winkelzahn. The hike around the Seebensee lake with the Churfirsten mountains behind invites you to marvel. After these beautiful impressions you return to Winkelzahn. The beautiful hiking route leads through the forest to the mountain station, then follow the path to Chrüz.',
             }
