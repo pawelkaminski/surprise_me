@@ -139,8 +139,8 @@ class GetOfferView(Resource):
     def _process_cache(self, request_json):
         if request_json['activity'] == 'hiking':
             return {
-                'departure_schedule': request_json['date']+'T08:20',
-                'arrival_schedule': request_json['date']+'T18:37',
+                'departure_schedule': request_json['schedule']+'T08:20',
+                'arrival_schedule': request_json['schedule']+'T18:37',
                 'departure_location': request_json['departure_location'],
                 'arrival_location': 'Flumserberg',
                 'price': 2900,
@@ -151,8 +151,8 @@ class GetOfferView(Resource):
             }
         else:
             return {
-                'departure_schedule': request_json['date']+'T15:11',
-                'arrival_schedule': request_json['date']+'T21:23',
+                'departure_schedule': request_json['schedule']+'T15:11',
+                'arrival_schedule': request_json['schedule']+'T21:23',
                 'departure_location': request_json['departure_location'],
                 'arrival_location': 'Baden',
                 'price': 7600,
