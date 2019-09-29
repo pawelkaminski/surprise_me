@@ -137,26 +137,36 @@ class GetOfferView(Resource):
         }
 
     def _process_cache(self, request_json):
+        if 'schedule' in request_json and request_json['schedule']:
+            schedule = request_json['schedule']
+        else:
+            schedule = '2019-09-30'
+
+        if 'participants' in request_json and request_json['participants']:
+            participants = request_json['participants']
+        else:
+            participants = 1
+
         if request_json['activity'] == 'hiking':
             return {
-                'departure_schedule': request_json['schedule']+'T08:20',
-                'arrival_schedule': request_json['schedule']+'T18:37',
+                'departure_schedule': schedule+'T08:20',
+                'arrival_schedule': schedule+'T18:37',
                 'departure_location': 'Zurich HB',
                 'arrival_location': 'Flumserberg',
                 'price': 2900,
-                'participants': request_json['participants'],
+                'participants': participants,
                 'surprise_name': 'Wanderungen im Heidiland.',
                 'event_name': 'Hiking: Flumserberg',
                 'event_description': 'From Tannenboden you reach the beautiful surroundings of Seeben on the hiking trail via Winkelzahn. The hike around the Seebensee lake with the Churfirsten mountains behind invites you to marvel. After these beautiful impressions you return to Winkelzahn. The beautiful hiking route leads through the forest to the mountain station, then follow the path to Chrüz.',
             }
         else:
             return {
-                'departure_schedule': request_json['schedule']+'T15:11',
-                'arrival_schedule': request_json['schedule']+'T21:23',
-                'departure_location': request_json['departure_location'],
+                'departure_schedule': schedule+'T15:11',
+                'arrival_schedule': schedule+'T21:23',
+                'departure_location': 'Zurich HB',
                 'arrival_location': 'Baden',
                 'price': 7600,
-                'participants': request_json['participants'],
+                'participants': participants,
                 'surprise_name': 'Bell Baronets & Elio Ricca @ Royal Baden',
                 'event_name': 'Bell Baronets & Elio Ricca @ Royal Baden',
                 'event_description': 'Loud, raw and with distortion in the blood. The Bell Baronets are back; with a new album and, as they say, ready to climb the rock sky. They combine their 70s vibe skillfully but unconventionally with contemporary musical influences resulting in an explosive jam. Their diverse stage experience and a sustained maturation process give free rein to our anticipation.',
