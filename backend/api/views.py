@@ -10,6 +10,7 @@ from flask_restful import Resource
 from pymongo import MongoClient
 
 from backend.clients.sbb_client import SBBClient
+from backend.clients.swisscom_client import SwisscomClient
 
 
 class PingView(Resource):
@@ -59,6 +60,10 @@ class GetOfferView(Resource):
         # mock_offer = self._get_from_cache(request_json)
 
         print(result)
+
+        if not result:
+            result = self._get_from_cache(request_json)
+
         result.update({
             'participants': request_json['participants'],
             'departure_location': request_json['departure_location'],
@@ -67,25 +72,26 @@ class GetOfferView(Resource):
         return result, HTTPStatus.OK
 
     def _get_cities_with_timeframes(self, activity, date):
-        # TODO(pawelk): pick only cheapest event
-        return [{
-            'surprise_name': 'Nobody expects Spanish inquisition',
-            'event_name': 'Hiking concert',
-            'event_description': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-            'city': 'Bern',
-            'time_start': '15:30',
-            'time_end': '17:30',
-            'price': 0,
-        }, {
-            'surprise_name': 'Nobody expects Spanish inquisition',
-            'event_name': 'Hiking concert',
-            'event_description': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-            'city': 'Luzern',
-            'time_start': '15:30',
-            'time_end': '17:30',
-            'price': 0,
-        }]
-        # TODO(pawelk): remember to cut list to up 5 events
+        cities = SwisscomClient().get_cities(activity, date)
+        print(cities)
+        return cities
+        # return [{
+        #     'surprise_name': 'Location exploration',
+        #     'event_name': 'Hiking concert',
+        #     'event_description': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+        #     'city': 'Bern',
+        #     'time_start': '15:30',
+        #     'time_end': '17:30',
+        #     'price': 0,
+        # }, {
+        #     'surprise_name': 'Uncommon event',
+        #     'event_name': 'Hiking concert',
+        #     'event_description': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+        #     'city': 'Luzern',
+        #     'time_start': '15:30',
+        #     'time_end': '17:30',
+        #     'price': 0,
+        # }]
 
     def _get_cheapest_sbb_tickets(self, activities, start_location, date):
         client = SBBClient()
@@ -94,7 +100,7 @@ class GetOfferView(Resource):
             cheapest_trip = client.get_cheapest_by_location(
                 start_location,
                 activity['city'],
-                self._datetime_from_string(date+'T'+activity['time_start']) - timedelta(hours=7),
+                self._datetime_from_string(date+'T'+activity['time_start']) - timedelta(hours=6),
                 self._datetime_from_string(date+'T'+activity['time_end'])
             )
             cheapest_trip['arrival_location'] = activity['city']
