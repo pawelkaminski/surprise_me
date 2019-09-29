@@ -127,7 +127,7 @@ class GetOfferView(Resource):
         return {
             'departure_schedule': '2019-09-29T15:30',
             'arrival_schedule': '2019-09-29T19:35',
-            'departure_location': request_json['departure_location'],
+            'departure_location': 'Zurich HB',
             'arrival_location': 'Bern',
             'price': 120,
             'participants': request_json['participants'],
@@ -141,7 +141,7 @@ class GetOfferView(Resource):
             return {
                 'departure_schedule': request_json['schedule']+'T08:20',
                 'arrival_schedule': request_json['schedule']+'T18:37',
-                'departure_location': request_json['departure_location'],
+                'departure_location': 'Zurich HB',
                 'arrival_location': 'Flumserberg',
                 'price': 2900,
                 'participants': request_json['participants'],
