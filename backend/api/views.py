@@ -129,7 +129,7 @@ class GetOfferView(Resource):
             'arrival_schedule': '2019-09-29T19:35',
             'departure_location': 'Zurich HB',
             'arrival_location': 'Bern',
-            'price': 320,
+            'price': 3200,
             'participants': 1,
             'surprise_name': 'Wanderungen im Heidiland.',
             'event_name': 'Hiking: Bern',
