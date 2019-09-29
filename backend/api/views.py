@@ -52,6 +52,9 @@ class GetOfferView(Resource):
         request_json = request.get_json()
         request_json['departure_location'] = 'Zürich HB'
 
+        if request_json['activity'] in ('hiking', 'rock concert'):
+            return self._process_cache(request_json), HTTPStatus.OK
+
         activity_cities = self._get_cities_with_timeframes(request_json['activity'], request_json['schedule'])
         result = self._get_cheapest_sbb_tickets(activity_cities, request_json['departure_location'],
                                                 request_json['schedule'])
@@ -132,3 +135,29 @@ class GetOfferView(Resource):
             'event_name': 'Hiking concert',
             'event_description': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
         }
+
+    def _process_cache(self, request_json):
+        if request_json['activity'] == 'hiking':
+            return {
+                'departure_schedule': '2019-09-30T08:00',
+                'arrival_schedule': '2019-09-30T09:00',
+                'departure_location': request_json['departure_location'],
+                'arrival_location': 'Flumserberg',
+                'price': 2900,
+                'participants': request_json['participants'],
+                'surprise_name': 'Wanderungen im Heidiland.',
+                'event_name': '',
+                'event_description': '',
+            }
+        else:
+            return {
+                'departure_schedule': '2019-09-30T08:00',
+                'arrival_schedule': '2019-09-30T09:00',
+                'departure_location': request_json['departure_location'],
+                'arrival_location': 'Flumserberg',
+                'price': 2900,
+                'participants': request_json['participants'],
+                'surprise_name': 'Wanderungen im Heidiland.',
+                'event_name': '',
+                'event_description': '',
+            }

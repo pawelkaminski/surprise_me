@@ -99,7 +99,7 @@ class SwisscomClient:
             collection = client[MONGO_DATABASE][EVENT_COLLECTION]
             query = {
                 'date': date,
-                activity: True,
+                'tag': activity,
             }
             response_base = {
                 'surprise_name': 'Uncommon event',
@@ -107,18 +107,19 @@ class SwisscomClient:
                 'event_name': activity,
                 'time_start': '14:30',
                 'time_end': '17:30',
-                'price': 0,
+                'price': 10,
             }
             for event in collection.find(query):
                 responses.append({
                     **response_base,
-                    'event_description': event['event_description'],
-                    'time_start': event['time_start'],
-                    'time_end': event['time_end'],
-                    'price': event['price'],
+                    'event_description': event['short_description_en'],
+                    'city': event['address_city'],
+                    # 'time_start': event['time_start'],
+                    # 'time_end': event['time_end'],
+                    #'price': event['price'],
                 })
 
-                if len(responses) > 5:
+                if len(responses) > 4:
                     return responses
 
         return responses
